@@ -1,0 +1,6 @@
+com.vectorprint.configuration
+com.vectorprint.configuration.decoration
+com.vectorprint.configuration.observing
+com.vectorprint.configuration.parameters
+com.vectorprint.configuration.parameters.annotation
+com.vectorprint.configuration.parser

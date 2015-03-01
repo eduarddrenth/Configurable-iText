@@ -1,0 +1,16 @@
+com.itextpdf.text.pdf
+com.vectorprint.report
+com.vectorprint.report.data
+com.vectorprint.report.data.types
+com.vectorprint.report.itext
+com.vectorprint.report.itext.annotations
+com.vectorprint.report.itext.debug
+com.vectorprint.report.itext.jaxb
+com.vectorprint.report.itext.mappingconfig
+com.vectorprint.report.itext.mappingconfig.model
+com.vectorprint.report.itext.style
+com.vectorprint.report.itext.style.conditions
+com.vectorprint.report.itext.style.css
+com.vectorprint.report.itext.style.parameters
+com.vectorprint.report.itext.style.stylers
+com.vectorprint.report.running

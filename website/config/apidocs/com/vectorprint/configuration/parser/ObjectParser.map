@@ -1,0 +1,12 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./SimpleCharStream.html" title="com.vectorprint.configuration.parser.SimpleCharStream" alt="" coords="15,1235,675,2127"/>
+<area shape="rect" id="node1" href="./SimpleCharStream.html" title="&lt;TABLE&gt;" alt="" coords="5,1230,686,2133"/>
+<area shape="rect" id="node2_1" href="./ObjectParser.html" title="com.vectorprint.configuration.parser.ObjectParser" alt="" coords="46,424,423,813"/>
+<area shape="rect" id="node2" href="./ObjectParser.html" title="&lt;TABLE&gt;" alt="" coords="35,419,434,819"/>
+<area shape="rect" id="node3_2" href="./Token.html" title="com.vectorprint.configuration.parser.Token" alt="" coords="84,873,385,1175"/>
+<area shape="rect" id="node3" href="./Token.html" title="&lt;TABLE&gt;" alt="" coords="73,867,396,1181"/>
+<area shape="rect" id="node5_3" href="./ObjectParserTokenManager.html" title="com.vectorprint.configuration.parser.ObjectParserTokenManager" alt="" coords="431,881,878,1167"/>
+<area shape="rect" id="node5" href="./ObjectParserTokenManager.html" title="&lt;TABLE&gt;" alt="" coords="421,876,889,1172"/>
+<area shape="rect" id="node4_4" href="./ObjectParserConstants.html" title="com.vectorprint.configuration.parser.ObjectParserConstants" alt="" coords="262,11,445,365"/>
+<area shape="rect" id="node4" href="./ObjectParserConstants.html" title="&lt;TABLE&gt;" alt="" coords="251,5,455,371"/>
+</map>

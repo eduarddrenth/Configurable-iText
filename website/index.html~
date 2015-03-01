@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html><head><title>website VectorPrint Report library</title></head><body>
+      <div>
+
+         <div style="background-color: #aaaaaa;margin:30px; padding: 10px; border: 3px inset rgb(32, 74, 135) ;font-size:14px;font-family: Verdana, Helvetica, sans serif; font-weight: bold">            <h3 style="color: #bb0000">Soon I will bring the build server (www.vectorprint.nl) down. I willc hangeto other themes, probably Agent Technology (Jade).
+            </h3><br/>
+            <h3 style="color: #bb0000">Released version 1.0 of the agpl library: ConfigurableReports!
+            </h3><br/>
+            <p>
+               Hi visitor, you have found the website about my reporting project. This project started with a assignment to build reports based on large amounts
+               of data. At first, being an xsl-fo fan, I built a solution using linux scripting, xsd, xslt and xsl-fo. This worked pretty neat, but in the end just wasn't
+               fast enough for millions of lines of data. Also the reports did not look that nice. I got a new assignment to build better looking reports and make the solution
+               a lot faster.<br/>
+               I had some experience with iText in the graphical industry and knew iText is the best Java solution as it comes to PDF.
+               In my first design I distinguished a data phase, yielding an efficient model with aggregated data and a report building phase. The solution provided
+               convenient configuration for both phases, integrated jFreechart to show some nice graphs and was fast enough.<br/>
+               About a year after this assignment I decided to extend the solution to a generic iText based reporting solution. Some years later I decided to make
+               it an open source project, hoping that you join me in development or in usage of this software.
+               <br/><br/>
+               Do not hesitate to contact me, Eduard.
+            </p>
+            <ul>
+               <li>Do you need to create professional reports from your Java data classes in an easy non intrusive way?</li>
+               <li>Do you want to be able to quickly change the look of your reports without the need to recompile?</li>
+               <li>Do you want firebug like feedback in your report to evaluate your styling?</li>
+               <li>Annotate your data and/or use xml configuration turn java objects into report parts</li>
+               <li>Build stylesheets using a javafx GUI</li>
+               <li>Translate css into VectorPrint styling</li>
+            </ul>
+            <br/>
+            The VectorPrint reporting library makes your iText report development a lot easier (annotation and configuration instead of coding) and more powerful.
+            Some of the highlights: annotate data to indicate how to add it to the report, css like styling, pdf/X-1a support, encryption, signing, bleeds, firebug like debug mode, SVG and jFreeChart support.
+         </div>
+
+         <div style="font-weight:bold;font-color:green;margin-bottom:10px;font-size:large">
+            <a href="VectorPrint.html">More detailed documentation</a>,&nbsp;
+            <a href="VectorPrintReportGUI-1.0-SNAPSHOT.jar" title="run with: java -cp VectorPrintReportGUI-1.0-SNAPSHOT.jar:$JAVA_HOME/jre/lib/jfxrt.jar com.vectorprint.vectorprintreportgui.StylesheetBuilder">Download GUI for stylesheets (JavaFX)</a>,&nbsp;
+            <a href="VectorPrintReportGUI.tgz">source of the GUI</a>,&nbsp;
+            <a href="http://www.vectorprint.nl">to the build server</a>,&nbsp;
+            <a href="http://www.vectorprint.nl/userContent/reporttarget/site/apidocs/index.html">report api</a>,&nbsp;
+            <a href="http://www.vectorprint.nl/userContent/configtarget/site/apidocs/index.html">config api</a><br/>
+            <a href="DataMappingConfig.xsd">data mapping xsd</a>,&nbsp;
+            <!--            <a href="stylesheetbuilder/dist/stylesheetbuilder.html">directly run the GUI (works with java 1.8 and low security settings)</a>-->
+         </div>
+         <h3 style="margin-bottom:10px">visualization of tasks and roles:</h3>
+         <a href="VectorPrint%20Reporting%20roles.png" title="click to enlarge">
+            <img style="width: 80%;height: 80%;" src="VectorPrint%20Reporting%20roles.png" alt="VectorPrint%20Reporting%20roles.png"/>
+         </a>
+         <h3 style="margin-bottom:10px">visualization of the software:</h3>
+         <a href="VectorPrint%20Reporting%20classes.png" title="click to enlarge">
+            <img style="width: 80%;height: 80%;" src="VectorPrint%20Reporting%20classes.png" alt="VectorPrint%20Reporting%20classes.png"/>
+         </a>
+         <h2 style="margin-bottom:10px">usage example</h2>
+         <div>
+
+            provide xml configuration on how to translate your data objects into report parts, for example:
+            <pre>
+                                 &lt;dm:datamappings
+                     xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+                     xmlns:dm='http://www.vectorprint.nl/report/datamapping/1.3'>
+                     &lt;dm:datamapping classname=".*\.My[^.]*" regex="true">
+                        &lt;dm:element>
+                           &lt;dm:datatype dataclass="com.vectorprint.report.data.types.PeriodValue" format="#,### 'hours'"/>
+                           &lt;dm:styleclass>niks&lt;/dm:styleclass>
+                           &lt;dm:elementtype>Phrase&lt;/dm:elementtype>
+                        &lt;/dm:element>
+                        &lt;dm:elementsfromdata>
+                           &lt;dm:element>
+                              &lt;dm:elementtype>Chunk&lt;/dm:elementtype>
+                           &lt;/dm:element>
+                           &lt;dm:datalistmethod>getMeFirst&lt;/dm:datalistmethod>
+                        &lt;/dm:elementsfromdata>
+                     &lt;/dm:datamapping>
+                     &lt;dm:datamapping classname=".*\.My[^.]*" regex="true" id="idee">
+                        &lt;dm:element>
+                           &lt;dm:datatype dataclass="com.vectorprint.report.data.types.PeriodValue"/>
+                           &lt;dm:elementtype>Phrase&lt;/dm:elementtype>
+                        &lt;/dm:element>
+                        &lt;dm:elementsfromdata>
+                           &lt;dm:element>
+                              &lt;dm:elementtype>Chunk&lt;/dm:elementtype>
+                           &lt;/dm:element>
+                           &lt;dm:datalistmethod>getMe&lt;/dm:datalistmethod>
+                        &lt;/dm:elementsfromdata>
+                     &lt;/dm:datamapping>
+
+                  &lt;/dm:datamappings>
+            </pre>
+            or use (or combine with) annotated classes holding data for the report, for example:
+
+            <pre>
+                  @ContainerStart( containerType = CONTAINER_ELEMENT.TABLE, styleClasses = "table")
+                  public class MyTable {}
+
+                  @Element( iTextClass = Phrase.class, styleClasses = {"bold","nl"}, dataType =
+                  @DataType ( dataClass = PercentageValue.class ) )
+                  public class MyData {
+                     @Override
+                     public String toString() { return "12.56"; }
+                  }
+
+                  @ContainerEnd(containerType = CONTAINER_ELEMENT.TABLE)
+                  @Element( iTextClass = PdfPCell.class, styleClasses = "kop" )
+                  public class MyEndCell {}
+
+                  @ContainerStart(styleClasses = {"kop","tablesmall"},containerType = CONTAINER_ELEMENT.NESTED_TABLE)
+                  @Element( iTextClass = PdfPCell.class, styleClasses = "kop" )
+                  public class MyNestedTable {
+                     @Override
+                     public String toString() { return "NT"; }
+                  }
+
+                  @ContainerStart( containerType = CONTAINER_ELEMENT.LIST, styleClasses = "list" )
+                  @MultipleFromData( dataListFunction = "getData", element = @Element(iTextClass = ListItem.class,styleClasses = "small") )
+                  @ContainerEnd(containerType = CONTAINER_ELEMENT.LIST)
+                  public class MyListFromData {
+                     public List&lt;String> getData() {
+                        return Arrays.asList(new String[] {"één","twee","drie","vier"});
+                     }
+                  }
+
+            </pre>
+
+            create a DataCollector that implements collect, for example:<br/>
+
+            <pre style="font-size: small">
+                  @Override
+                  public ReportDataHolderImpl collect() {
+                     add(new MyChapter());
+                     add(new MyTable());
+                        add(new MyCell());
+                        add(new MyCell());
+                        add(new MyNestedTable());
+                           add(new MyCell());
+                           add(new MyCell());
+                           add(new MyEndNested());
+                        add(new MyEndCell());
+                     add(new MyChapter());
+                     add(new MyListFromData());
+                     add(new MyTableFromData());
+                     return getDataHolder();
+                  }
+            </pre>
+         </div>
+
+         <table style="border: 1px solid black; float: right">
+            <caption style="padding-bottom: 10px;text-align: left">
+               provide styling information in a settings file, call java -cp &lt;classpath> com.vectorprint.report.running.ReportRunner and follow directions.<br/><br/>
+               examples of styling properties:
+            </caption>
+            <tr>
+               <td style="min-width: 100px">built in help</td>
+               <td style="border-bottom: 1px dashed black;padding-bottom: 20px">
+                  <code>
+                     download a binary distribution and do: java -jar
+                  </code>
+               </td>
+            </tr>
+            <tr>
+               <td >styles always applied</td>
+               <td style="border-bottom: 1px dashed black;padding-bottom: 20px">
+                  <code>
+                     DEFAULTSTYLERSFIRST=Font(size=11);Padding(padding=5);Alignment(align=LEFT_MIDDLE);Border(position=none)
+                  </code>
+               </td>
+            </tr>
+            <tr >
+               <td >shadow and underline all text</td>
+               <td style="border-bottom: 1px dashed black;padding-bottom: 20px">
+                  <code>
+                     DEFAULTSTYLERSLAST=Shadow(opacity=0.7,shiftx=0.3,layername=shadow);Underline
+                  </code>
+               </td>
+            </tr>
+            <tr>
+               <td >a styled table</td>
+               <td style="border-bottom: 1px dashed black;padding-bottom: 20px">
+                  <code>
+                     table=Table(widths=40|140,spaceafter=3,spacebefore=3);Zebra(oddcolor=#ff0000,evencolor=#00ff00)
+                  </code>
+               </td>
+            </tr>
+            <tr>
+               <td >a styled cell</td>
+               <td style="border-bottom: 1px dashed black;padding-bottom: 20px">
+                  <code>
+                     headerleft=Alignment(align=CENTER_MIDDLE);Border(position=trbl,borderwidth=0.3,color=#000000)
+                  </code>
+               </td>
+            </tr>
+            <tr>
+               <td >a styled chapter</td>
+               <td style="border-bottom: 1px dashed black;padding-bottom: 20px">
+                  <code>
+                     chapter=Font(style=bold,size=16);Indent(indent=10);Leading(leading=30)
+                  </code>
+               </td>
+            </tr>
+            <tr>
+               <td >a barcode with a default parameter</td>
+               <td style="border-bottom: 1px dashed black;padding-bottom: 20px">
+                  <code>
+                     bc=Barcode<br/>
+                     Barcode.dostyle=true
+                  </code>
+               </td>
+            </tr>
+            <tr>
+               <td >svg image near a styled object</td>
+               <td style="border-bottom: 1px dashed black;padding-bottom: 20px">
+                  <code>
+                     svg=SVG(width=100,height=100,url=file:src/test/resources/config/tiger.svg,scale=20, shiftx=20, shifty=20)
+                  </code>
+               </td>
+            </tr>
+            <tr>
+               <td >pdf/X-1a</td>
+               <td style="border-bottom: 1px dashed black;padding-bottom: 20px">
+                  <code>
+                     documentsettings=DocumentSettings(pdfa=true)
+                     icccolorprofile=file:src/test/resources/config/sRGB.icc
+                  </code>
+               </td>
+            </tr>
+            <tr>
+               <td >signing</td>
+               <td style="border-bottom: 1px dashed black;padding-bottom: 20px">
+                  <code>
+                     documentsettings=DocumentSettings(signcertificate=file:src/test/resources/config/eduarddrenth-TECRA-S11.pfx,keystorepassword=password)
+                  </code>
+               </td>
+            </tr>
+            <tr>
+               <td >certificate encryption</td>
+               <td style="border-bottom: 1px dashed black;padding-bottom: 20px">
+                  <code>
+                     documentsettings=DocumentSettings(certificate=file:src/test/resources/config/eduarddrenth-TECRA-S11.crt)
+                  </code>
+               </td>
+            </tr>
+            <tr>
+               <td >conditional shape on pages</td>
+               <td style="border-bottom: 1px dashed black;padding-bottom: 20px">
+                  <code>
+                     PAGESTYLERS=Shape(bordercolor=#663322,color=#11aa55,borderwidth=2,SHAPE=bezier,fill=true,background=false,points=60|20|90|20|75|40,conditions=re,x=50,y=50)<br/>
+                     re=PageNumberCondition(odd=true)
+                  </code>
+               </td>
+            </tr>
+            <tr>
+               <td >import pdf's</td>
+               <td style="border-bottom: 1px dashed black;padding-bottom: 20px">
+                  <code>
+                     importpdf=ImportPdf(url=file:src/test/resources/testEncryption.pdf,password=password,scale=70,layername=imported pages,rotate=0,styleafteradding=false,background=false,separatepage=false,drawdirect=false);ImportPdf(url=file:src/test/resources/testCertificate.pdf,keystore=file:src/test/resources/config/eduarddrenth-TECRA-S11.pfx,keystorepassword=password,scale=30,layername=imported pages,rotate=0,styleafteradding=true,background=false,shadow=true,nofooter=true);Border(color=red,borderwidth=0.5)
+
+                  </code>
+               </td>
+            </tr>
+            <tr>
+               <td >Table of contents in your pdf</td>
+               <td style="border-bottom: 1px dashed black;padding-bottom: 20px">
+                  <code>
+                     documentsettings=DocumentSettings(toc=true) 
+                  </code>
+               </td>
+            </tr>
+         </table>
+
+      </div>
+   <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-6856781-4', 'java.net');
+  ga('send', 'pageview');
+
+</script></body></html>
