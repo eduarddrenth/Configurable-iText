@@ -13,6 +13,7 @@
       <module>ConfigurableReports</module>
       <module>ReportjFreeChartSupport</module>
       <module>ReportSVGSupport</module>
+      <module>ReportQrSupport</module>
    </modules>
   
    <url>http://vectorprintreport.java.net</url>
