@@ -44,7 +44,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 /**
- * printing svg as images
+ * printing QR as images
  * @author Eduard Drenth at VectorPrint.nl
  */
 public class QR extends com.vectorprint.report.itext.style.stylers.Image<String> {
