@@ -28,15 +28,15 @@ package com.vectorprint.report.itext.style.stylers;
 
 import com.vectorprint.VectorPrintRuntimeException;
 import com.vectorprint.configuration.annotation.Setting;
-import com.vectorprint.configuration.annotation.Settings;
 import com.vectorprint.configuration.annotation.SettingsAnnotationProcessor;
+import com.vectorprint.configuration.annotation.SettingsField;
 import com.vectorprint.configuration.parameters.ParameterImpl;
 import com.vectorprint.report.jfree.ChartThemeBuilder;
 
 /**
  * Gives you the possibility to configure a {@link ChartThemeBuilder} using settings. {@link Chart} will call
  * {@link SettingsAnnotationProcessor#initSettings(java.lang.Object, com.vectorprint.configuration.EnhancedMap) }
- * the instantiated {@link ChartThemeBuilder}, so you can use {@link Setting} and {@link Settings} in your own implementation
+ * the instantiated {@link ChartThemeBuilder}, so you can use {@link Setting} and {@link SettingsField} in your own implementation
  * of {@link ChartThemeBuilder}.
  * @author Eduard Drenth at VectorPrint.nl
  */
