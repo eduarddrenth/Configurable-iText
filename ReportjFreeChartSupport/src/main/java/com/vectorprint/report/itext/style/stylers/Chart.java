@@ -76,16 +76,16 @@ public class Chart extends com.vectorprint.report.itext.style.stylers.Image<Data
    }
 
    private void initParams() {
-      addParameter(new StringParameter(CAT_LABEL, "label for data categories").setDefault(CAT_LABEL));
-      addParameter(new StringParameter(TITLE, "label for data categories").setDefault(TITLE));
-      addParameter(new StringParameter(VAL_LABEL, "label for data categories").setDefault(VAL_LABEL));
-      addParameter(new BooleanParameter(VERTICAL, "vertical orientation of chart"));
-      addParameter(new BooleanParameter(LEGEND, "show legend or not").setDefault(Boolean.TRUE));
-      addParameter(new FloatParameter(WIDTH, "width of the chart").setDefault(50f));
-      addParameter(new FloatParameter(HEIGHT, "height of the chart").setDefault(50f));
-      addParameter(new ChartTypeParameter(TYPE, "kind of chart: " + Arrays.asList(CHARTTYPE.values())));
+      addParameter(new StringParameter(CAT_LABEL, "label for data categories").setDefault(CAT_LABEL),Chart.class);
+      addParameter(new StringParameter(TITLE, "label for data categories").setDefault(TITLE),Chart.class);
+      addParameter(new StringParameter(VAL_LABEL, "label for data categories").setDefault(VAL_LABEL),Chart.class);
+      addParameter(new BooleanParameter(VERTICAL, "vertical orientation of chart"),Chart.class);
+      addParameter(new BooleanParameter(LEGEND, "show legend or not").setDefault(Boolean.TRUE),Chart.class);
+      addParameter(new FloatParameter(WIDTH, "width of the chart").setDefault(50f),Chart.class);
+      addParameter(new FloatParameter(HEIGHT, "height of the chart").setDefault(50f),Chart.class);
+      addParameter(new ChartTypeParameter(TYPE, "kind of chart: " + Arrays.asList(CHARTTYPE.values())),Chart.class);
       addParameter(new ChartThemeParameter(THEMEBUILDER, "classname of the themebuilder to use").
-          setDefault(new DefaultChartThemeBuilder()));
+          setDefault(new DefaultChartThemeBuilder()),Chart.class);
    }
 
    public Chart(ImageLoader imageLoader, LayerManager layerManager, Document document, PdfWriter writer, EnhancedMap settings) throws VectorPrintException {
