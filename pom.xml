@@ -3,7 +3,7 @@
 
    <groupId>com.vectorprint</groupId>
    <artifactId>ReportingParent</artifactId>
-   <version>5.3-SNAPSHOT</version>
+   <version>5.4-SNAPSHOT</version>
    <packaging>pom</packaging>
    <inceptionYear>2014</inceptionYear>
 
@@ -179,7 +179,7 @@
       <dependency>
          <groupId>com.vectorprint</groupId>
          <artifactId>Config</artifactId>
-         <version>1.4</version>
+         <version>1.6</version>
       </dependency>
       <dependency>
          <groupId>org.bouncycastle</groupId>
