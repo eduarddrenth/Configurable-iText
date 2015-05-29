@@ -27,10 +27,13 @@ package com.vectorprint.report.running;
 
 import com.vectorprint.VectorPrintException;
 import com.vectorprint.configuration.Settings;
+import com.vectorprint.configuration.binding.parameters.ParameterizableBindingFactoryImpl;
 import com.vectorprint.configuration.decoration.FindableProperties;
+import com.vectorprint.configuration.parser.ParameterizableParserImpl;
 import com.vectorprint.configuration.parser.ParseException;
 import static com.vectorprint.report.ReportConstants.*;
 import com.vectorprint.report.data.ReportDataHolder;
+import com.vectorprint.report.itext.style.stylers.ChartBindingHelper;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -64,6 +67,7 @@ public class JFreeChartReportBuilderTest {
       FindableProperties.clearStaticReferences();
       instance = new ThreadSafeReportBuilder("src/test/resources/config",
           ThreadSafeReportBuilder.DEFAULTPROPERTYURLS.toArray(new String[ThreadSafeReportBuilder.DEFAULTPROPERTYURLS.size()]), allowEmpties, true);
+      ParameterizableBindingFactoryImpl.getFactory(ParameterizableBindingFactoryImpl.PARAMPARSERCLASS, ParameterizableBindingFactoryImpl.PARAMSERIALIZERCLASS, new ChartBindingHelper(), true);
    }
 
    @AfterClass
@@ -85,13 +89,13 @@ public class JFreeChartReportBuilderTest {
 
    @Test
    public void testjFreeChart() throws Exception {
-      instance.buildReport(new String[]{"-output", TARGET+"testjFreeChart.pdf"});
+      instance.buildReport(new String[]{"output="+ TARGET+"testjFreeChart.pdf"});
       assertTrue(TestableReportGenerator.isDidCreate());
    }
 
    @Test
    public void testjFreeChartDebug() throws Exception {
-      instance.buildReport(new String[]{"-output", TARGET+"testjFreeChartDebug.pdf","-debug","true"});
+      instance.buildReport(new String[]{"output="+ TARGET+"testjFreeChartDebug.pdf\ndebug=true"});
       assertTrue(TestableReportGenerator.isDidCreate());
    }
 

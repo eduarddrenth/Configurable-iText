@@ -40,10 +40,4 @@ public class ChartTypeParameter extends ParameterImpl<ChartBuilder.CHARTTYPE>{
       super(key, help);
    }
 
-   @Override
-   public ChartBuilder.CHARTTYPE convert(String string) throws VectorPrintRuntimeException {
-      return ChartBuilder.CHARTTYPE.valueOf(string.toUpperCase());
-   }
-   
-
 }

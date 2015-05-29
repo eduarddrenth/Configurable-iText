@@ -179,7 +179,7 @@
       <dependency>
          <groupId>com.vectorprint</groupId>
          <artifactId>Config</artifactId>
-         <version>1.6</version>
+         <version>1.8-SNAPSHOT</version>
       </dependency>
       <dependency>
          <groupId>org.bouncycastle</groupId>

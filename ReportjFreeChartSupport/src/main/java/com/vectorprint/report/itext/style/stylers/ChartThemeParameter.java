@@ -26,7 +26,6 @@ package com.vectorprint.report.itext.style.stylers;
  * #L%
  */
 
-import com.vectorprint.VectorPrintRuntimeException;
 import com.vectorprint.configuration.annotation.Setting;
 import com.vectorprint.configuration.annotation.SettingsAnnotationProcessor;
 import com.vectorprint.configuration.annotation.SettingsField;
@@ -45,26 +44,6 @@ public class ChartThemeParameter extends ParameterImpl<ChartThemeBuilder>{
    public ChartThemeParameter(String key, String help) {
       super(key, help);
    }
-
-   /**
-    * will do Class.forName(value).newInstance();
-    * @param value
-    * @return
-    * @throws VectorPrintRuntimeException 
-    */
-   @Override
-   public ChartThemeBuilder convert(String value) throws VectorPrintRuntimeException {
-      try {
-         return (ChartThemeBuilder) Class.forName(value).newInstance();
-      } catch (ClassNotFoundException ex) {
-         throw new VectorPrintRuntimeException(ex);
-      } catch (InstantiationException ex) {
-         throw new VectorPrintRuntimeException(ex);
-      } catch (IllegalAccessException ex) {
-         throw new VectorPrintRuntimeException(ex);
-      }
-   }
-
    
 
 }

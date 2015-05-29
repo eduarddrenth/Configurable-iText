@@ -84,13 +84,13 @@ public class QrReportBuilderTest {
 
    @Test
    public void testQr() throws Exception {
-      instance.buildReport(new String[]{"-output", TARGET+"testQr.pdf"});
+      instance.buildReport(new String[]{"output="+ TARGET+"testQr.pdf"});
       assertTrue(TestableReportGenerator.isDidCreate());
    }
 
    @Test
    public void testQrDebug() throws Exception {
-      instance.buildReport(new String[]{"-output", TARGET+"testQrDebug.pdf", "-debug", "true"});
+      instance.buildReport(new String[]{"output="+ TARGET+"testQrDebug.pdf\ndebug=true"});
       assertTrue(TestableReportGenerator.isDidCreate());
    }
 

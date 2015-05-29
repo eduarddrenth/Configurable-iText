@@ -48,8 +48,6 @@ import java.util.Arrays;
 
 import static com.vectorprint.report.jfree.ChartBuilder.CHARTTYPE;
 import static com.vectorprint.report.itext.style.stylers.DocumentSettings.WIDTH;
-import java.util.Map;
-import java.util.Observable;
 import org.jfree.data.general.Dataset;
 
 /**
@@ -178,37 +176,13 @@ public class Chart extends com.vectorprint.report.itext.style.stylers.Image<Data
       setValue(HEIGHT, height);
    }
 
-   /**
-    * Calls the super and {@link SettingsAnnotationProcessor#initSettings(java.lang.Object, com.vectorprint.configuration.EnhancedMap)
-    * } on the {@link #THEMEBUILDER} parameter
-    *
-    * @param o
-    * @param arg
-    */
+
    @Override
-   public void update(Observable o, Object arg) {
-      super.update(o, arg);
-      if (o instanceof Parameter) {
+   protected void parameterChanged(Parameter o) {
          Parameter p = (Parameter) o;
-         if (THEMEBUILDER.equals(p.getKey())) {
+         if (ChartThemeBuilder.class.isAssignableFrom(p.getValueClass())) {
             SETTINGS_ANNOTATION_PROCESSOR.initSettings(p.getValue(), getSettings());
          }
-      }
-   }
-
-   /**
-    * Calls the super and {@link SettingsAnnotationProcessor#initSettings(java.lang.Object, com.vectorprint.configuration.EnhancedMap)
-    * } on the {@link #THEMEBUILDER} parameter
-    *
-    * @param args
-    * @param settings
-    */
-   @Override
-   public void setup(Map<String, String> args, Map<String, String> settings) {
-      super.setup(args, settings);
-      if (settings instanceof EnhancedMap) {
-         SETTINGS_ANNOTATION_PROCESSOR.initSettings(getValue(THEMEBUILDER, ChartThemeBuilder.class), (EnhancedMap) settings);
-      }
    }
 
    /**
