@@ -67,7 +67,6 @@ public class JFreeChartReportBuilderTest {
       FindableProperties.clearStaticReferences();
       instance = new ThreadSafeReportBuilder("src/test/resources/config",
           ThreadSafeReportBuilder.DEFAULTPROPERTYURLS.toArray(new String[ThreadSafeReportBuilder.DEFAULTPROPERTYURLS.size()]), allowEmpties, true);
-      ParameterizableBindingFactoryImpl.getFactory(ParameterizableBindingFactoryImpl.PARAMPARSERCLASS, ParameterizableBindingFactoryImpl.PARAMSERIALIZERCLASS, new ChartBindingHelper(), true);
    }
 
    @AfterClass

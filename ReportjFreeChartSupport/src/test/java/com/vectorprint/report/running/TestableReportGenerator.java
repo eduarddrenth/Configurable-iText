@@ -25,14 +25,12 @@ package com.vectorprint.report.running;
  * #L%
  */
 
-import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.vectorprint.VectorPrintException;
-import com.vectorprint.VectorPrintRuntimeException;
 import com.vectorprint.report.data.DataCollectionMessages;
 import com.vectorprint.report.data.ReportDataHolder;
 import com.vectorprint.report.itext.BaseReportGenerator;
@@ -47,7 +45,6 @@ import org.jfree.data.general.Dataset;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.xy.DefaultXYDataset;
-import org.junit.Assert;
 
 /**
  *

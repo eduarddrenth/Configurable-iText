@@ -26,14 +26,14 @@ package com.vectorprint.report.running;
  * #L%
  */
 import com.vectorprint.report.data.DataCollectionMessages;
-import com.vectorprint.report.data.DataCollectorImpl;
 import com.vectorprint.report.data.ReportDataHolderImpl;
+import com.vectorprint.report.itext.style.stylers.JfreeDataCollector;
 
 /**
  *
  * @author Eduard Drenth at VectorPrint.nl
  */
-public class DataCollector extends DataCollectorImpl {
+public class DataCollector extends JfreeDataCollector {
    
    private static boolean produceError = false;
    
@@ -49,4 +49,6 @@ public class DataCollector extends DataCollectorImpl {
       }
       return getDataHolder();
    }
+   
+   
 }
