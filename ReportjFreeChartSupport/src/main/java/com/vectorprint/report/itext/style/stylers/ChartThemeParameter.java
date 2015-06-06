@@ -42,7 +42,7 @@ import com.vectorprint.report.jfree.ChartThemeBuilder;
 public class ChartThemeParameter extends ParameterImpl<ChartThemeBuilder>{
 
    public ChartThemeParameter(String key, String help) {
-      super(key, help);
+      super(key, help,ChartThemeBuilder.class);
    }
    
 

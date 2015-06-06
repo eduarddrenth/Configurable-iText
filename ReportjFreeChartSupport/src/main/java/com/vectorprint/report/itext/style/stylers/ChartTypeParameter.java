@@ -26,7 +26,6 @@ package com.vectorprint.report.itext.style.stylers;
  * #L%
  */
 
-import com.vectorprint.VectorPrintRuntimeException;
 import com.vectorprint.configuration.parameters.ParameterImpl;
 import com.vectorprint.report.jfree.ChartBuilder;
 
@@ -37,7 +36,7 @@ import com.vectorprint.report.jfree.ChartBuilder;
 public class ChartTypeParameter extends ParameterImpl<ChartBuilder.CHARTTYPE>{
 
    public ChartTypeParameter(String key, String help) {
-      super(key, help);
+      super(key, help,ChartBuilder.CHARTTYPE.class);
    }
 
 }
