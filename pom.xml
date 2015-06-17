@@ -3,7 +3,7 @@
 
    <groupId>com.vectorprint</groupId>
    <artifactId>ReportingParent</artifactId>
-   <version>5.4-SNAPSHOT</version>
+   <version>6.1-SNAPSHOT</version>
    <packaging>pom</packaging>
    <inceptionYear>2014</inceptionYear>
 
@@ -19,7 +19,7 @@
    <url>http://vectorprintreport.java.net</url>
    <description>This powerful reporting library aims to simplify producing reports using iText. Looking at producing reports with iText
       the most demanding and coding intensive tasks are how to get from data to report blocks, how to style those blocks and how to evaluate (debug) the resulting report.
-      Exactly those three major tasks are well supported by the IextStyling library: - xml configuration and/or annotations to
+      Exactly those three major tasks are well supported by the iTextStyling library: - xml configuration and/or annotations to
       transform existing Java data objects into report block - provide styling information (css like) seperate from code - a firebug like debug
       mode to help evaluate your report.
    </description>
@@ -179,7 +179,7 @@
       <dependency>
          <groupId>com.vectorprint</groupId>
          <artifactId>Config</artifactId>
-         <version>1.8-SNAPSHOT</version>
+         <version>5.0</version>
       </dependency>
       <dependency>
          <groupId>org.bouncycastle</groupId>
