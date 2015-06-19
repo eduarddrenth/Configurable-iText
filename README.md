@@ -7,7 +7,9 @@ You can configure:
   - using xml configuration (xsd available)
   - using annotations
 - how the iText building blocks are styled
-  - using a styelsheet (which you can build using a JavaFX GUI)
+  - using a stylesheet (which you can build using a JavaFX GUI)
+
+The library offers syntax independence for stylesheets, two built in syntaxes are provided: a fast specific syntax and JSON.
 
 In a stylesheet you can define style, but also conditions that determine when to style.
 
