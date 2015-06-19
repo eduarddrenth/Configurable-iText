@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node1_0" href="../EnhancedMap.html" title="com.vectorprint.configuration.EnhancedMap" alt="" coords="15,11,465,851"/>
-<area shape="rect" id="node1" href="../EnhancedMap.html" title="&lt;TABLE&gt;" alt="" coords="5,5,475,856"/>
-<area shape="rect" id="node2_1" href="./AbstractPropertiesDecorator.html" title="com.vectorprint.configuration.decoration.AbstractPropertiesDecorator" alt="" coords="15,909,465,1992"/>
-<area shape="rect" id="node2" href="./AbstractPropertiesDecorator.html" title="&lt;TABLE&gt;" alt="" coords="5,904,475,1997"/>
-<area shape="rect" id="node3_2" href="./ThreadSafeProperties.html" title="com.vectorprint.configuration.decoration.ThreadSafeProperties" alt="" coords="217,2051,535,2163"/>
-<area shape="rect" id="node3" href="./ThreadSafeProperties.html" title="&lt;TABLE&gt;" alt="" coords="206,2045,546,2168"/>
-</map>

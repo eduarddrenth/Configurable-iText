@@ -1,6 +1,14 @@
+com.vectorprint.config.jaxb
 com.vectorprint.configuration
+com.vectorprint.configuration.annotation
+com.vectorprint.configuration.binding
+com.vectorprint.configuration.binding.parameters
+com.vectorprint.configuration.binding.parameters.json
+com.vectorprint.configuration.binding.settings
 com.vectorprint.configuration.decoration
-com.vectorprint.configuration.observing
+com.vectorprint.configuration.decoration.visiting
+com.vectorprint.configuration.jaxb
 com.vectorprint.configuration.parameters
 com.vectorprint.configuration.parameters.annotation
 com.vectorprint.configuration.parser
+com.vectorprint.configuration.preparing
