@@ -55,8 +55,8 @@ public class QR extends com.vectorprint.report.itext.style.stylers.Image<String>
    }
 
    private void initParams() {
-      addParameter(new IntParameter(WIDTH, "width of the svg").setDefault(1),QR.class);
-      addParameter(new IntParameter(HEIGHT, "width of the svg").setDefault(1),QR.class);
+      addParameter(new IntParameter(WIDTH, "width of the QR code").setDefault(1),QR.class);
+      addParameter(new IntParameter(HEIGHT, "height of the QR code").setDefault(1),QR.class);
    }
 
    public QR(ImageLoader imageLoader, LayerManager layerManager,Document document, PdfWriter writer, EnhancedMap settings) throws VectorPrintException {

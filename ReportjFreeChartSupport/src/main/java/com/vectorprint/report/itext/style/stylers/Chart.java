@@ -48,6 +48,7 @@ import java.util.Arrays;
 
 import static com.vectorprint.report.jfree.ChartBuilder.CHARTTYPE;
 import static com.vectorprint.report.itext.style.stylers.DocumentSettings.WIDTH;
+import java.util.Observable;
 import org.jfree.data.general.Dataset;
 
 /**
@@ -74,16 +75,16 @@ public class Chart extends com.vectorprint.report.itext.style.stylers.Image<Data
    }
 
    private void initParams() {
-      addParameter(new StringParameter(CAT_LABEL, "label for data categories").setDefault(CAT_LABEL),Chart.class);
-      addParameter(new StringParameter(TITLE, "label for data categories").setDefault(TITLE),Chart.class);
-      addParameter(new StringParameter(VAL_LABEL, "label for data categories").setDefault(VAL_LABEL),Chart.class);
-      addParameter(new BooleanParameter(VERTICAL, "vertical orientation of chart"),Chart.class);
-      addParameter(new BooleanParameter(LEGEND, "show legend or not").setDefault(Boolean.TRUE),Chart.class);
-      addParameter(new FloatParameter(WIDTH, "width of the chart").setDefault(50f),Chart.class);
-      addParameter(new FloatParameter(HEIGHT, "height of the chart").setDefault(50f),Chart.class);
-      addParameter(new ChartTypeParameter(TYPE, "kind of chart: " + Arrays.asList(CHARTTYPE.values())),Chart.class);
+      addParameter(new StringParameter(CAT_LABEL, "label for data categories").setDefault(CAT_LABEL), Chart.class);
+      addParameter(new StringParameter(TITLE, "label for data categories").setDefault(TITLE), Chart.class);
+      addParameter(new StringParameter(VAL_LABEL, "label for data categories").setDefault(VAL_LABEL), Chart.class);
+      addParameter(new BooleanParameter(VERTICAL, "vertical orientation of chart"), Chart.class);
+      addParameter(new BooleanParameter(LEGEND, "show legend or not").setDefault(Boolean.TRUE), Chart.class);
+      addParameter(new FloatParameter(WIDTH, "width of the chart").setDefault(50f), Chart.class);
+      addParameter(new FloatParameter(HEIGHT, "height of the chart").setDefault(50f), Chart.class);
+      addParameter(new ChartTypeParameter(TYPE, "kind of chart: " + Arrays.asList(CHARTTYPE.values())), Chart.class);
       addParameter(new ChartThemeParameter(THEMEBUILDER, "classname of the themebuilder to use").
-          setDefault(new DefaultChartThemeBuilder()),Chart.class);
+          setDefault(new DefaultChartThemeBuilder()), Chart.class);
    }
 
    public Chart(ImageLoader imageLoader, LayerManager layerManager, Document document, PdfWriter writer, EnhancedMap settings) throws VectorPrintException {
@@ -107,7 +108,7 @@ public class Chart extends com.vectorprint.report.itext.style.stylers.Image<Data
    protected Image createImage(PdfContentByte canvas, Dataset data, float opacity) throws VectorPrintException, BadElementException {
       ChartBuilder cb = new ChartBuilder(getType(),
           data, getTitle(), getTitle(), getValLabel(), isVertical(), isLegend(), getValue(THEMEBUILDER, ChartThemeBuilder.class), getSettings());
-      Image img = ItextChartHelper.getChartImage(cb.getChart(), canvas, getWidth(), getHeight(),opacity);
+      Image img = ItextChartHelper.getChartImage(cb.getChart(), canvas, getWidth(), getHeight(), opacity);
       applySettings(img);
       return img;
    }
@@ -176,20 +177,20 @@ public class Chart extends com.vectorprint.report.itext.style.stylers.Image<Data
       setValue(HEIGHT, height);
    }
 
-
    @Override
-   protected void parameterChanged(Parameter o) {
-         Parameter p = (Parameter) o;
-         if (ChartThemeBuilder.class.isAssignableFrom(p.getValueClass())) {
-            SETTINGS_ANNOTATION_PROCESSOR.initSettings(p.getValue(), getSettings());
-         }
+   public void update(Observable o, Object arg) {
+      Parameter p = (Parameter) o;
+      if (ChartThemeBuilder.class.isAssignableFrom(p.getValueClass())) {
+         SETTINGS_ANNOTATION_PROCESSOR.initSettings(p.getValue(), getSettings());
+      }
    }
 
    /**
-    * When the argument is a {@link Dataset} just return it otherwise throw an exception. Override this
-    * method to support conversion to {@link Dataset}.
+    * When the argument is a {@link Dataset} just return it otherwise throw an exception. Override this method to
+    * support conversion to {@link Dataset}.
+    *
     * @param s
-    * @return 
+    * @return
     */
    @Override
    public Dataset convert(Object s) {
@@ -197,8 +198,8 @@ public class Chart extends com.vectorprint.report.itext.style.stylers.Image<Data
          return (Dataset) s;
       } else {
          throw new VectorPrintRuntimeException(String.format(
-             "override this method to convert %s (value: %s) to a Dataset", 
-             (s!=null)?s.getClass().getName():null, String.valueOf(s)
+             "override this method to convert %s (value: %s) to a Dataset",
+             (s != null) ? s.getClass().getName() : null, String.valueOf(s)
          ));
       }
    }
