@@ -1,15 +1,16 @@
-
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.vectorprint.report.running;
+
+package com.vectorprint.report.itext.style.stylers;
 
 /*
  * #%L
- * VectorPrintReport4.0
+ * ReportjFreeChartSupport
  * %%
- * Copyright (C) 2012 - 2013 VectorPrint
+ * Copyright (C) 2014 - 2015 VectorPrint
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
@@ -25,30 +26,23 @@ package com.vectorprint.report.running;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * #L%
  */
-import com.vectorprint.report.data.DataCollectionMessages;
-import com.vectorprint.report.data.DataCollectorImpl;
-import com.vectorprint.report.data.ReportDataHolderImpl;
+
+import com.vectorprint.configuration.binding.parameters.ParamBindingHelper;
+import com.vectorprint.report.itext.style.parameters.ReportParameterBindingFactory;
 
 /**
  *
  * @author Eduard Drenth at VectorPrint.nl
  */
-public class DataCollector extends DataCollectorImpl {
+public class ChartParamBindingFactoryJson extends ReportParameterBindingFactory {
    
-   private static boolean produceError = false;
-   
-
-   public static void setProduceError(boolean produceError) {
-      DataCollector.produceError = produceError;
-   }
+   private static final ParamBindingHelper BINDING_HELPER = new ChartBindingHelperJson();
 
    @Override
-   public ReportDataHolderImpl collect() {
-      if (produceError) {
-         super.getDataHolder().getMessages().addMessage(DataCollectionMessages.Level.ERROR, "foutje");
-      }
-      return getDataHolder();
+   public ParamBindingHelper getBindingHelper() {
+      return BINDING_HELPER;
    }
    
    
+
 }

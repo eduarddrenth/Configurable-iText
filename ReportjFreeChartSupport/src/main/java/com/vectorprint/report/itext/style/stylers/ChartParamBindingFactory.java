@@ -9,8 +9,6 @@ package com.vectorprint.report.itext.style.stylers;
 /*
  * #%L
  * ReportjFreeChartSupport
- * $Id:$
- * $HeadURL:$
  * %%
  * Copyright (C) 2014 - 2015 VectorPrint
  * %%
@@ -29,18 +27,20 @@ package com.vectorprint.report.itext.style.stylers;
  * #L%
  */
 
-import com.vectorprint.report.data.DataCollectorImpl;
-import com.vectorprint.report.itext.style.parameters.ReportBindingHelper;
+import com.vectorprint.configuration.binding.parameters.ParamBindingHelper;
+import com.vectorprint.report.itext.style.parameters.ReportParameterBindingFactory;
 
 /**
  *
  * @author Eduard Drenth at VectorPrint.nl
  */
-public abstract class JfreeDataCollector extends DataCollectorImpl {
+public class ChartParamBindingFactory extends ReportParameterBindingFactory {
+   
+   private static final ParamBindingHelper BINDING_HELPER = new ChartBindingHelper();
 
    @Override
-   public Class<? extends ReportBindingHelper> getDefaultBindingHelperClass() {
-      return ChartBindingHelper.class;
+   public ParamBindingHelper getBindingHelper() {
+      return BINDING_HELPER;
    }
    
    
