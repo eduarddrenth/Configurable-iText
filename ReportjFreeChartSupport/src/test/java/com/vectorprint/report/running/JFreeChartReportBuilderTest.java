@@ -30,9 +30,7 @@ import com.vectorprint.configuration.Settings;
 import com.vectorprint.configuration.decoration.FindableProperties;
 import com.vectorprint.configuration.jaxb.SettingsFromJAXB;
 import com.vectorprint.configuration.jaxb.SettingsXMLHelper;
-import com.vectorprint.report.ReportConstants;
 import static com.vectorprint.report.ReportConstants.*;
-import com.vectorprint.report.itext.style.stylers.ChartParamBindingFactory;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -61,7 +59,6 @@ public class JFreeChartReportBuilderTest {
 
    @BeforeClass
    public static void setUpClass() throws IOException, VectorPrintException {
-      System.setProperty(ReportConstants.BINDINGFACTORYCLASSNAME, ChartParamBindingFactory.class.getName());
       Logger.getLogger(Settings.class.getName()).setLevel(Level.FINE);
    }
 

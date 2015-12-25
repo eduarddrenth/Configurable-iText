@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.vectorprint.report.itext.style.stylers;
+package com.vectorprint.report.itext.style.stylers.binding;
 
 /*
  * #%L
@@ -28,13 +28,13 @@ package com.vectorprint.report.itext.style.stylers;
  */
 
 import com.vectorprint.configuration.binding.parameters.ParamBindingHelper;
-import com.vectorprint.report.itext.style.parameters.ReportParameterBindingFactory;
+import com.vectorprint.report.itext.style.parameters.binding.JsonReportParameterBindingFactory;
 
 /**
  *
  * @author Eduard Drenth at VectorPrint.nl
  */
-public class ChartParamBindingFactoryJson extends ReportParameterBindingFactory {
+public class ChartParamBindingFactoryJson extends JsonReportParameterBindingFactory {
    
    private static final ParamBindingHelper BINDING_HELPER = new ChartBindingHelperJson();
 

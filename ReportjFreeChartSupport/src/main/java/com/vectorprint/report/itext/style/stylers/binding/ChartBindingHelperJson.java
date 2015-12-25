@@ -1,4 +1,4 @@
-package com.vectorprint.report.itext.style.stylers;
+package com.vectorprint.report.itext.style.stylers.binding;
 
 /*
  * #%L
@@ -21,14 +21,14 @@ package com.vectorprint.report.itext.style.stylers;
  * #L%
  */
 import com.vectorprint.VectorPrintRuntimeException;
-import com.vectorprint.report.itext.style.parameters.ReportBindingHelper;
+import com.vectorprint.report.itext.style.parameters.binding.JsonReportBindingHelper;
 import com.vectorprint.report.jfree.ChartThemeBuilder;
 
 /**
  *
  * @author Eduard Drenth at VectorPrint.nl
  */
-public class ChartBindingHelper extends ReportBindingHelper {
+public class ChartBindingHelperJson extends JsonReportBindingHelper {
 
 
    @Override

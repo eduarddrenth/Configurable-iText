@@ -48,6 +48,7 @@ import java.util.Arrays;
 
 import static com.vectorprint.report.jfree.ChartBuilder.CHARTTYPE;
 import static com.vectorprint.report.itext.style.stylers.DocumentSettings.WIDTH;
+import com.vectorprint.report.itext.style.stylers.binding.ChartFactoryValidator;
 import java.util.Observable;
 import org.jfree.data.general.Dataset;
 
@@ -71,6 +72,7 @@ public class Chart extends com.vectorprint.report.itext.style.stylers.Image<Data
 
    public Chart() {
       super();
+      ChartFactoryValidator.setEnabled(true);
       initParams();
    }
 
