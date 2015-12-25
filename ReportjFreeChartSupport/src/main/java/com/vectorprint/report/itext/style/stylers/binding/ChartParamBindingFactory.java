@@ -28,10 +28,12 @@ package com.vectorprint.report.itext.style.stylers.binding;
  */
 
 import com.vectorprint.configuration.binding.parameters.ParamBindingHelper;
+import com.vectorprint.configuration.generated.parser.ParameterizableParserImpl;
 import com.vectorprint.report.itext.style.parameters.binding.ReportParameterBindingFactory;
+import com.vectorprint.report.itext.style.stylers.ChartThemeParameter;
 
 /**
- *
+ * A ParameterizableBindingFactory published through SPI using {@link ParameterizableParserImpl} and supporting {@link ChartThemeParameter}.
  * @author Eduard Drenth at VectorPrint.nl
  */
 public class ChartParamBindingFactory extends ReportParameterBindingFactory {

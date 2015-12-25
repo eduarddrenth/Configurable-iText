@@ -28,10 +28,13 @@ package com.vectorprint.report.itext.style.stylers.binding;
  */
 
 import com.vectorprint.configuration.binding.parameters.ParamBindingHelper;
+import com.vectorprint.configuration.binding.parameters.json.JSONSupport;
+import com.vectorprint.report.itext.style.parameters.binding.JsonFactoryValidator;
 import com.vectorprint.report.itext.style.parameters.binding.JsonReportParameterBindingFactory;
 
 /**
- *
+ * A ParameterizableBindingFactory published through SPI using {@link JSONSupport} and supporting {@link ChartThemeParameter}.
+ * @see JsonFactoryValidator
  * @author Eduard Drenth at VectorPrint.nl
  */
 public class ChartParamBindingFactoryJson extends JsonReportParameterBindingFactory {
