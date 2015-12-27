@@ -54,7 +54,8 @@ import org.jfree.data.general.Dataset;
 
 /**
  * printing jFree charts as images. If you want theme your charts you should implemement {@link ChartThemeBuilder}, give
- * it a no argument constructor and pass its classname as {@link #THEMEBUILDER parameter}.
+ * it a no argument constructor and pass its classname as {@link #THEMEBUILDER parameter}. This styler requires a special
+ * bindingfactory, therefore instantiation will call {@link ChartFactoryValidator#setEnabled(boolean) } with true.
  *
  * @author Eduard Drenth at VectorPrint.nl
  */
@@ -72,7 +73,6 @@ public class Chart extends com.vectorprint.report.itext.style.stylers.Image<Data
 
    public Chart() {
       super();
-      ChartFactoryValidator.setEnabled(true);
       initParams();
    }
 
@@ -87,7 +87,8 @@ public class Chart extends com.vectorprint.report.itext.style.stylers.Image<Data
       addParameter(new ChartTypeParameter(TYPE, "kind of chart: " + Arrays.asList(CHARTTYPE.values())), Chart.class);
       addParameter(new ChartThemeParameter(THEMEBUILDER, "classname of the themebuilder to use").
           setDefault(new DefaultChartThemeBuilder()), Chart.class);
-   }
+      ChartFactoryValidator.setEnabled(true);
+}
 
    public Chart(ImageLoader imageLoader, LayerManager layerManager, Document document, PdfWriter writer, EnhancedMap settings) throws VectorPrintException {
       super(imageLoader, layerManager, document, writer, settings);
