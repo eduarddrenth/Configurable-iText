@@ -41,14 +41,13 @@ import com.vectorprint.report.itext.ImageLoader;
 import com.vectorprint.report.itext.LayerManager;
 import com.vectorprint.report.itext.style.parameters.FloatParameter;
 import static com.vectorprint.report.itext.style.stylers.Chart.THEMEBUILDER;
+import static com.vectorprint.report.itext.style.stylers.DocumentSettings.WIDTH;
+import com.vectorprint.report.itext.style.stylers.binding.ChartFactoryValidator;
 import com.vectorprint.report.jfree.ChartBuilder;
+import com.vectorprint.report.jfree.ChartBuilder.CHARTTYPE;
 import com.vectorprint.report.jfree.ChartThemeBuilder;
 import com.vectorprint.report.jfree.ItextChartHelper;
 import java.util.Arrays;
-
-import static com.vectorprint.report.jfree.ChartBuilder.CHARTTYPE;
-import static com.vectorprint.report.itext.style.stylers.DocumentSettings.WIDTH;
-import com.vectorprint.report.itext.style.stylers.binding.ChartFactoryValidator;
 import java.util.Observable;
 import org.jfree.data.general.Dataset;
 
@@ -78,8 +77,8 @@ public class Chart extends com.vectorprint.report.itext.style.stylers.Image<Data
 
    private void initParams() {
       addParameter(new StringParameter(CAT_LABEL, "label for data categories").setDefault(CAT_LABEL), Chart.class);
-      addParameter(new StringParameter(TITLE, "label for data categories").setDefault(TITLE), Chart.class);
-      addParameter(new StringParameter(VAL_LABEL, "label for data categories").setDefault(VAL_LABEL), Chart.class);
+      addParameter(new StringParameter(TITLE, "title").setDefault(TITLE), Chart.class);
+      addParameter(new StringParameter(VAL_LABEL, "label for data values").setDefault(VAL_LABEL), Chart.class);
       addParameter(new BooleanParameter(VERTICAL, "vertical orientation of chart"), Chart.class);
       addParameter(new BooleanParameter(LEGEND, "show legend or not").setDefault(Boolean.TRUE), Chart.class);
       addParameter(new FloatParameter(WIDTH, "width of the chart").setDefault(50f), Chart.class);
