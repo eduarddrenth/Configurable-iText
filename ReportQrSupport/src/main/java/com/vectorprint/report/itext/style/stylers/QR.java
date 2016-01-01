@@ -37,9 +37,8 @@ import com.vectorprint.configuration.EnhancedMap;
 import com.vectorprint.configuration.parameters.IntParameter;
 import com.vectorprint.report.itext.ImageLoader;
 import com.vectorprint.report.itext.LayerManager;
-
-import static com.vectorprint.report.itext.style.stylers.DocumentSettings.WIDTH;
 import static com.vectorprint.report.itext.style.stylers.DocumentSettings.HEIGHT;
+import static com.vectorprint.report.itext.style.stylers.DocumentSettings.WIDTH;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
@@ -80,6 +79,11 @@ public class QR extends com.vectorprint.report.itext.style.stylers.Image<String>
       }
       applySettings(img);
       return img;
+   }
+
+   @Override
+   public String getHelp() {
+      return "draw a QR code." + " " + super.getHelp();
    }
 
 

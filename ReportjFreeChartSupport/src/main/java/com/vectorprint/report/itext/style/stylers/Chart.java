@@ -206,4 +206,10 @@ public class Chart extends com.vectorprint.report.itext.style.stylers.Image<Data
       }
    }
 
+   @Override
+   public String getHelp() {
+      return "draw a (jFree)Chart." + " " + super.getHelp();
+   }
+
+   
 }
