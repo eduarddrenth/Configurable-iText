@@ -4,7 +4,8 @@
 
          <div style="background-color: #aaaaaa;margin:30px; padding: 10px; border: 3px inset rgb(32, 74, 135) ;font-size:14px;font-family: Verdana, Helvetica, sans serif; font-weight: bold">            
             <h2 style="color: #bb0000"><a href="https://github.com/eduarddrenth">this software can also be found on github</a></h2><br/>
-            <h1>new GUI, resizable, bugfixes, integrates icepdf</h1>
+            <h1>DataCollector no longer obligatory, no more System.exit from the code, better javadoc / help text</h1>
+            <h2>new GUI, resizable, bugfixes, integrates icepdf</h2>
             <h2>New release 8.0, introduction of Java SPI for syntax binding, introduction of ConditionFactory for initiating conditions.</h2>
             <h2>New releases! Java 8, (code) improvements such as pdfa/1a supprt and performance, javadoc improvements, updated dependencies, bug fixes.</h2>
             <h1>Highlight: with this solution you can stream your data in and your report out.</h1>
@@ -38,7 +39,7 @@
          </div>
 
          <div style="font-weight:bold;font-color:green;margin-bottom:10px;font-size:large">
-            <a href="VectorPrintReportGUI-1.2-SNAPSHOT.jar" title="run with: java -cp VectorPrintReportGUI-1.2-SNAPSHOT.jar:$JAVA_HOME/jre/lib/jfxrt.jar com.vectorprint.vectorprintreportgui.StylesheetBuilder (java8: java -jar VectorPrintReportGUI-1.2-SNAPSHOT.jar)">Download GUI for stylesheets (JavaFX)</a>,&nbsp;
+            <a href="VectorPrintReportGUI-1.8-SNAPSHOT.jar" title="run with: java -cp VectorPrintReportGUI-1.8-SNAPSHOT.jar:$JAVA_HOME/jre/lib/jfxrt.jar com.vectorprint.vectorprintreportgui.StylesheetBuilder (java8: java -jar VectorPrintReportGUI-1.8-SNAPSHOT.jar)">Download GUI for stylesheets (JavaFX)</a>,&nbsp;
             <a href="https://github.com/eduarddrenth/iText-GUI">source of the GUI</a>,&nbsp;
             <a href="DataMappingConfig.xsd">data mapping xsd</a>,&nbsp;
             <!--            <a href="stylesheetbuilder/dist/stylesheetbuilder.html">directly run the GUI (works with java 1.8 and low security settings)</a>-->
@@ -127,18 +128,18 @@
             <pre style="font-size: small">
                   @Override
                   public ReportDataHolderImpl collect() {
-                     add(new MyChapter());
-                     add(new MyTable());
-                        add(new MyCell());
-                        add(new MyCell());
-                        add(new MyNestedTable());
-                           add(new MyCell());
-                           add(new MyCell());
-                           add(new MyEndNested());
-                        add(new MyEndCell());
-                     add(new MyChapter());
-                     add(new MyListFromData());
-                     add(new MyTableFromData());
+                     add(new MyChapter(),"id for datamapping");
+                     add(new MyTable(),null);
+                        add(new MyCell(),"another id for datamapping");
+                        add(new MyCell(),null);
+                        add(new MyNestedTable(),null);
+                           add(new MyCell(),null);
+                           add(new MyCell(),null);
+                           add(new MyEndNested(),null);
+                        add(new MyEndCell(),null);
+                     add(new MyChapter(),null);
+                     add(new MyListFromData(),null);
+                     add(new MyTableFromData(),null);
                      return getDataHolder();
                   }
             </pre>

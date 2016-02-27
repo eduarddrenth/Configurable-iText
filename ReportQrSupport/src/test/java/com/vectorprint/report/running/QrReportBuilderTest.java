@@ -25,6 +25,7 @@ package com.vectorprint.report.running;
  * #L%
  */
 
+import com.itextpdf.text.pdf.PdfReader;
 import com.vectorprint.VectorPrintException;
 import com.vectorprint.configuration.Settings;
 import com.vectorprint.configuration.decoration.FindableProperties;
@@ -37,12 +38,10 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.bind.JAXBException;
-import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -76,25 +75,24 @@ public class QrReportBuilderTest {
    @Before
    public void setUp() throws IOException, VectorPrintException, JAXBException {
       init(true);
-      TestableReportGenerator.setDidCreate(false);
       instance.getSettings().remove(VERSION);
       instance.getSettings().remove(HELP);
    }
 
-   @After
-   public void tearDown() {
+   private void checkPdf(String path) throws IOException {
+      new PdfReader(path);
    }
 
    @Test
    public void testQr() throws Exception {
       instance.buildReport(new String[]{"output="+ TARGET+"testQr.pdf"});
-      assertTrue(TestableReportGenerator.isDidCreate());
+      checkPdf(TARGET+"testQr.pdf");
    }
 
    @Test
    public void testQrDebug() throws Exception {
       instance.buildReport(new String[]{"output="+ TARGET+"testQrDebug.pdf\ndebug=true"});
-      assertTrue(TestableReportGenerator.isDidCreate());
+      checkPdf(TARGET+"testQrDebug.pdf");
    }
 
 }

@@ -25,6 +25,7 @@ package com.vectorprint.report.running;
  * #L%
  */
 
+import com.itextpdf.text.pdf.PdfReader;
 import com.vectorprint.VectorPrintException;
 import com.vectorprint.configuration.Settings;
 import com.vectorprint.configuration.decoration.FindableProperties;
@@ -42,7 +43,6 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -76,7 +76,6 @@ public class JFreeChartReportBuilderTest {
    @Before
    public void setUp() throws IOException, VectorPrintException, JAXBException {
       init(true);
-      TestableReportGenerator.setDidCreate(false);
       instance.getSettings().remove(VERSION);
       instance.getSettings().remove(HELP);
    }
@@ -84,18 +83,22 @@ public class JFreeChartReportBuilderTest {
    @After
    public void tearDown() {
    }
+   
+   private void checkPdf(String path) throws IOException {
+      new PdfReader(path);
+   }
 
 
    @Test
    public void testjFreeChart() throws Exception {
       instance.buildReport(new String[]{"output="+ TARGET+"testjFreeChart.pdf"});
-      assertTrue(TestableReportGenerator.isDidCreate());
+      checkPdf(TARGET+"testjFreeChart.pdf");
    }
 
    @Test
    public void testjFreeChartDebug() throws Exception {
       instance.buildReport(new String[]{"output="+ TARGET+"testjFreeChartDebug.pdf\ndebug=true"});
-      assertTrue(TestableReportGenerator.isDidCreate());
+      checkPdf(TARGET+"testjFreeChartDebug.pdf");
    }
 
 }

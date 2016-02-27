@@ -9,7 +9,7 @@
    <parent>
       <groupId>com.vectorprint</groupId>
       <artifactId>ReportingParent</artifactId>
-      <version>8.2-SNAPSHOT</version>
+      <version>8.10-SNAPSHOT</version>
       <relativePath>../pom.xml</relativePath>
    </parent>
     
@@ -53,16 +53,6 @@
          </plugin>
       </plugins>
    </build>
-    
-   <reporting>
-      <plugins>
-         <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>cobertura-maven-plugin</artifactId>
-            <version>2.5.2</version>
-         </plugin>
-      </plugins>
-   </reporting>
 
    <dependencies>
       <dependency>

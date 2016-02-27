@@ -42,16 +42,13 @@ import com.vectorprint.report.itext.EventHelper;
  */
 public class TestableReportGenerator extends BaseReportGenerator<ReportDataHolder> {
 
-   private static boolean didCreate = false;
 
    public TestableReportGenerator() throws VectorPrintException {
       super(new EventHelper<ReportDataHolder>(), new DefaultElementProducer());
-      didCreate = false;
    }
 
    @Override
    protected void createReportBody(Document document, ReportDataHolder data, com.itextpdf.text.pdf.PdfWriter writer) throws DocumentException, VectorPrintException {
-      didCreate = true;
       try {
          
          createAndAddElement(null, getStylers("qr"), Image.class);
@@ -78,15 +75,5 @@ public class TestableReportGenerator extends BaseReportGenerator<ReportDataHolde
       }
       return true;
    }
-
-
-   public static boolean isDidCreate() {
-      return didCreate;
-   }
-
-   public static void setDidCreate(boolean didCreate) {
-      TestableReportGenerator.didCreate = didCreate;
-   }
-
 
 }

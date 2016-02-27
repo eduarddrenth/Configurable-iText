@@ -3,7 +3,7 @@
 
    <groupId>com.vectorprint</groupId>
    <artifactId>ReportingParent</artifactId>
-   <version>8.2-SNAPSHOT</version>
+   <version>8.10-SNAPSHOT</version>
    <packaging>pom</packaging>
    <inceptionYear>2014</inceptionYear>
 
@@ -126,17 +126,46 @@
             </plugin>
             <plugin>
                <groupId>org.apache.maven.plugins</groupId>
-               <artifactId>maven-release-plugin</artifactId>
-               <version>2.5.2</version>
+               <artifactId>maven-surefire-plugin</artifactId>
+               <version>2.19.1</version>
+            </plugin>
+            <plugin>
+               <groupId>org.codehaus.mojo</groupId>
+               <artifactId>cobertura-maven-plugin</artifactId>
+               <version>2.7</version>
                <configuration>
-                  <releaseProfiles>release</releaseProfiles>
-                  <goals>deploy</goals>         
-               </configuration>
+                  <instrumentation>
+                     <ignores>
+                        <ignore>com.vectorprint.report.itext.style.parser.*</ignore>
+                        <ignore>com.vectorprint.report.itext.jaxb.*</ignore>
+                     </ignores>
+                     <excludes>
+                        <exclude>com/vectorprint/report/itext/jaxb/**/*.class</exclude>
+                        <exclude>com/vectorprint/report/itext/style/parser/**/*.class</exclude>
+                     </excludes>
+                  </instrumentation>
+               </configuration>         
             </plugin>
          </plugins>
       </pluginManagement>
    </build>
-   
+
+   <reporting>
+      <plugins>
+         <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>cobertura-maven-plugin</artifactId>
+            <version>2.7</version>
+            <configuration>
+               <formats>
+                  <format>html</format>
+                  <format>xml</format>
+               </formats>
+            </configuration>            
+         </plugin>
+      </plugins>
+   </reporting>
+
    <dependencyManagement>
       <dependencies>
          <dependency>
