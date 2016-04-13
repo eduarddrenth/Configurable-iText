@@ -36,11 +36,7 @@ public class ChartBindingHelperJson extends JsonReportBindingHelper {
       if (ChartThemeBuilder.class.equals(clazz)) {
          try {
             return (T) Class.forName(value).newInstance();
-         } catch (ClassNotFoundException ex) {
-            throw new VectorPrintRuntimeException(ex);
-         } catch (InstantiationException ex) {
-            throw new VectorPrintRuntimeException(ex);
-         } catch (IllegalAccessException ex) {
+         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
             throw new VectorPrintRuntimeException(ex);
          }
       } else {

@@ -54,7 +54,7 @@ public class TestableReportGenerator extends BaseReportGenerator<ReportDataHolde
 
 
    public TestableReportGenerator() throws VectorPrintException {
-      super(new EventHelper<ReportDataHolder>(), new DefaultElementProducer());
+      super(new EventHelper<>(), new DefaultElementProducer());
    }
 
    @Override
@@ -78,9 +78,7 @@ public class TestableReportGenerator extends BaseReportGenerator<ReportDataHolde
          createAndAddElement(new DefaultXYDataset(), getStylers("xyline"), Image.class);
          createAndAddElement(null, getStylers("xyline"), Image.class);
          
-      } catch (InstantiationException ex) {
-         throw new VectorPrintException(ex);
-      } catch (IllegalAccessException ex) {
+      } catch (InstantiationException | IllegalAccessException ex) {
          throw new VectorPrintException(ex);
       }
    }
@@ -90,11 +88,7 @@ public class TestableReportGenerator extends BaseReportGenerator<ReportDataHolde
       if (!messages.getMessages(DataCollectionMessages.Level.ERROR).isEmpty()) {
          try {
             createAndAddElement(messages.getMessages(DataCollectionMessages.Level.ERROR), getStylers("bigbold"), Phrase.class);
-         } catch (InstantiationException ex) {
-            throw new VectorPrintException(ex);
-         } catch (IllegalAccessException ex) {
-            throw new VectorPrintException(ex);
-         } catch (DocumentException ex) {
+         } catch (InstantiationException | IllegalAccessException | DocumentException ex) {
             throw new VectorPrintException(ex);
          }
       }

@@ -3,7 +3,7 @@
 
    <groupId>com.vectorprint</groupId>
    <artifactId>ReportingParent</artifactId>
-   <version>8.10-SNAPSHOT</version>
+   <version>8.11-SNAPSHOT</version>
    <packaging>pom</packaging>
    <inceptionYear>2014</inceptionYear>
 
