@@ -14,17 +14,16 @@ package com.vectorprint.report.itext.style.stylers;
  * it under the terms of the GNU Affero General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * #L%
  */
-
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Image;
@@ -44,6 +43,7 @@ import java.io.IOException;
 
 /**
  * printing QR as images
+ *
  * @author Eduard Drenth at VectorPrint.nl
  */
 public class QR extends com.vectorprint.report.itext.style.stylers.Image<String> {
@@ -54,12 +54,12 @@ public class QR extends com.vectorprint.report.itext.style.stylers.Image<String>
    }
 
    private void initParams() {
-      addParameter(new IntParameter(WIDTH, "width of the QR code").setDefault(1),QR.class);
-      addParameter(new IntParameter(HEIGHT, "height of the QR code").setDefault(1),QR.class);
+      addParameter(new IntParameter(WIDTH, "width of the QR code").setDefault(1), QR.class);
+      addParameter(new IntParameter(HEIGHT, "height of the QR code").setDefault(1), QR.class);
    }
 
-   public QR(ImageLoader imageLoader, LayerManager layerManager,Document document, PdfWriter writer, EnhancedMap settings) throws VectorPrintException {
-      super(imageLoader,layerManager,document, writer, settings);
+   public QR(ImageLoader imageLoader, LayerManager layerManager, Document document, PdfWriter writer, EnhancedMap settings) throws VectorPrintException {
+      super(imageLoader, layerManager, document, writer, settings);
       initParams();
    }
 
@@ -67,12 +67,12 @@ public class QR extends com.vectorprint.report.itext.style.stylers.Image<String>
    protected Image createImage(PdfContentByte canvas, String data, float opacity) throws VectorPrintException, BadElementException {
       Image img = null;
       try {
-         if (data==null&&getData()==null) {
+         if (data == null && getData() == null) {
             ByteArrayOutputStream out = new ByteArrayOutputStream(100);
-            IOHelper.load(getUrl().openStream(),out);
+            IOHelper.load(getUrl().openStream(), out);
             img = new BarcodeQRCode(out.toString(), getValue(WIDTH, Integer.class), getValue(HEIGHT, Integer.class), null).getImage();
          } else {
-            img = new BarcodeQRCode(data==null?getData():data, getValue(WIDTH, Integer.class), getValue(HEIGHT, Integer.class), null).getImage();
+            img = new BarcodeQRCode(data == null ? getData() : data, getValue(WIDTH, Integer.class), getValue(HEIGHT, Integer.class), null).getImage();
          }
       } catch (IOException ex) {
          throw new VectorPrintException(ex);
@@ -85,6 +85,5 @@ public class QR extends com.vectorprint.report.itext.style.stylers.Image<String>
    public String getHelp() {
       return "draw a QR code." + " " + super.getHelp();
    }
-
 
 }
