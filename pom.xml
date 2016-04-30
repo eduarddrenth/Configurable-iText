@@ -30,6 +30,10 @@
       <system>hudson</system>
       <url>http://jenkins.vectorprint.nl</url>
    </ciManagement>
+   
+   <issueManagement>
+      <url>https://github.com/eduarddrenth/Configurable-iText/issues</url>
+   </issueManagement>
 
    <developers>
       <developer>
