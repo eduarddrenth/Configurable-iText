@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns1:settings
+   xmlns:ns1='http://www.vectorprint.nl/config/settings/1.5'>
+   <ns1:url>src/test/resources/config/messages.properties</ns1:url>
+   <ns1:url>src/test/resources/config/table.properties</ns1:url>
+   <ns1:url>src/test/resources/config/chart.properties</ns1:url>
+   <ns1:url>src/test/resources/config/run.properties</ns1:url>
+   <ns1:url>src/test/resources/config/page.properties</ns1:url>
+   <ns1:url>src/test/resources/config/styling.properties</ns1:url>
+   <ns1:feature classname="com.vectorprint.configuration.decoration.ThreadSafeProperties"/>
+   <ns1:feature classname="com.vectorprint.configuration.decoration.FindableProperties"/>
+   <ns1:feature classname="com.vectorprint.configuration.decoration.HelpSupportedProperties">
+      <ns1:url>src/test/resources/config/help.properties</ns1:url>
+   </ns1:feature>
+   <ns1:preprocessor preprocessorclassname="com.vectorprint.configuration.preparing.TrimKeyValue"/>
+
+</ns1:settings>
